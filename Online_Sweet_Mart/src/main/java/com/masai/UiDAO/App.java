@@ -8,6 +8,8 @@ import DAO.AdminDAO;
 import DAO.AdminDAOimp;
 import EntityDAO.Admin;
 import EntityDAO.Customer;
+import ServiceDAO.AdminService;
+import ServiceDAO.CustomerService;
 
 /**
  * Hello world!
@@ -21,26 +23,31 @@ public class App
 		char choice = '0';
 	        do {
 	        	System.out.println();
-	        	System.out.println("1. View all Products");
-	        	System.out.println("2. update Product by ID");
-	        	System.out.println("2. Delete a Product by its ID");
-	        	System.out.println("3. View Customer Details");
-	        	System.out.println("4. Update Customer Details by ID");
-	        	System.out.println("5. Delete Customer Details by ID");
+	        	System.out.println("1. Add a new category");
+	        	System.out.println("2. view all category");
+	        	System.out.println("3. Add a new Products");
+	        	System.out.println("4. View all Products");
+	        	System.out.println("5. update Product by ID");
+	        	System.out.println("6. Delete a Product by its ID");
+	        	System.out.println("7. View Customer Details");
+	        	System.out.println("8. Update Customer Details by ID");
+	        	System.out.println("9. Delete Customer Details by ID");
 	        	System.out.println("0. Exit");
 	        	System.out.println();
 	        	System.out.print("Enter your choice: ");
 	        	choice = sc.next().charAt(0);
+	        	AdminService adminserv = new AdminService();
 	        	
 	        	switch(choice)
 	        	{
 	        		case '1':
-	        			
+	        			adminserv.addCategory(sc);
 	        			break;
 	        		case '2':
+	        			adminserv.viewCategory();
 	        			break;
 	        		case '3':
-	        			
+	        			adminserv.addProduct(sc);
 	        			break;
 	        		case '4':
 	        			break;
@@ -98,6 +105,16 @@ public class App
 		AdminDAO adminDAO = new AdminDAOimp();
 		adminDAO.addCustomerToAdmin(username,pass );
 	}
+	static void UserLogin(Scanner sc)
+	{
+		System.out.print("Create Your User Name: ");
+		String username = sc.next();
+		System.out.print("Create Your password: ");
+		String pass = sc.next();
+		CustomerService cusServ = new CustomerService();
+		cusServ.checkCustomer(username,pass);
+		
+	}
 	
 	
     public static void main( String[] args )
@@ -120,6 +137,7 @@ public class App
         			adminLogin(sc);
         			break;
         		case '2':
+        			UserLogin(sc);
         			break;
         		case '3':
         			UserSignUp(sc);
