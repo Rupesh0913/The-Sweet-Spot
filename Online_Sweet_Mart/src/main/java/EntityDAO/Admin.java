@@ -3,29 +3,19 @@ package EntityDAO;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+@Entity
 public class Admin {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id=001;
 	private String username = "Admin";
 	private String password = "Admin";
-	@OneToMany(mappedBy ="add" , cascade = CascadeType.ALL)
-	Set<Customer> setCust;
 	
-	public Admin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Admin(Set<Customer> setCust) {
-		super();
-		this.setCust = setCust;
-	}
 
 	public int getId() {
 		return id;
@@ -51,13 +41,6 @@ public class Admin {
 		this.password = password;
 	}
 
-	public Set<Customer> getSetCust() {
-		return setCust;
-	}
-
-	public void setSetCust(Set<Customer> setCust) {
-		this.setCust = setCust;
-	}
 	
 	
 	

@@ -15,20 +15,16 @@ public class Customer {
 	private String username;
 	private String password;
 	
-	@ManyToOne
-	@JoinColumn(name ="Admin_id")
-	Admin add;
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String username, String password, Admin add) {
+	public Customer(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.add = add;
 	}
 
 	public int getId() {
@@ -55,13 +51,6 @@ public class Customer {
 		this.password = password;
 	}
 
-	public Admin getAdd() {
-		return add;
-	}
-
-	public void setAdd(Admin add) {
-		this.add = add;
-	}
 	
 	
 }
