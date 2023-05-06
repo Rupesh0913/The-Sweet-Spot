@@ -12,6 +12,11 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
+	@Override
+	public String toString() {
+		return " id: " + id + ", username: " + username + ", password: " + password;
+	}
+
 	private String username;
 	private String password;
 	
