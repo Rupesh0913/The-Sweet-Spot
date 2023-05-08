@@ -8,6 +8,7 @@ import DAO.AdminDAO;
 import DAO.AdminDAOimp;
 import EntityDAO.Admin;
 import EntityDAO.Customer;
+import Exception.SomeThingWentWrongException;
 import ServiceDAO.AdminService;
 import ServiceDAO.CustomerService;
 
@@ -17,6 +18,35 @@ import ServiceDAO.CustomerService;
  */
 public class App 
 {
+	static void customerInterface(Scanner sc) {
+		char choice = '0';
+        do {
+        	System.out.println();
+        	System.out.println("1. View all Products");
+        	System.out.println("2. View cart");
+        	System.out.println("0. Exit");
+        	System.out.println();
+        	System.out.print("Enter your choice: ");
+        	choice = sc.next().charAt(0);
+        	CustomerService cusSev = new CustomerService(); 
+        	
+        	switch(choice)
+        	{
+        		case '1':
+        			cusSev.allProducts();
+        			break;
+        		case '2':
+//        			cusSev.showCart();
+        			break;
+        		case '0':
+        			System.out.println("Thanks for visiting");
+        			break;
+        		default:
+        			System.out.println("Invalid Input");
+        	}
+        	
+        }while(choice!='0');
+	}
 	
 	static void adimnInterface(Scanner sc) {
 		 
@@ -30,8 +60,6 @@ public class App
 	        	System.out.println("5. update Product by ID");
 	        	System.out.println("6. Delete a Product by its ID");
 	        	System.out.println("7. View Customer Details");
-	        	System.out.println("8. Update Customer Details by ID");
-	        	System.out.println("9. Delete Customer Details by ID");
 	        	System.out.println("0. Exit");
 	        	System.out.println();
 	        	System.out.print("Enter your choice: ");
@@ -50,8 +78,14 @@ public class App
 	        			adminserv.addProduct(sc);
 	        			break;
 	        		case '4':
+	        			adminserv.printAllProducts();
 	        			break;
 	        		case '5':
+	        			adminserv.updateProducts(sc);
+	        		case '6':
+	        			adminserv.deleteProducts(sc);
+	        		case '7':
+	        			adminserv.viewAllCustomers();
 	        			break;
 	        		case '0':
 	        			System.out.println("Thanks for visiting");
@@ -103,8 +137,11 @@ public class App
 //		
 //		
 		AdminDAO adminDAO = new AdminDAOimp();
-		adminDAO.addCustomerToAdmin(username,pass );
+		
+			adminDAO.addCustomerToAdmin(username,pass );
+		
 	}
+	
 	static void UserLogin(Scanner sc)
 	{
 		System.out.print("Create Your User Name: ");
@@ -112,7 +149,13 @@ public class App
 		System.out.print("Create Your password: ");
 		String pass = sc.next();
 		CustomerService cusServ = new CustomerService();
-		cusServ.checkCustomer(username,pass);
+		if(cusServ.checkCustomer(username,pass)) {
+			customerInterface(sc);
+		}
+		else
+		{
+			System.out.println("Invalid credentials");
+		}
 		
 	}
 	

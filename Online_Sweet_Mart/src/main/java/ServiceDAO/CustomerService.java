@@ -1,23 +1,54 @@
 package ServiceDAO;
 
-import java.util.List;
 
+
+import java.util.Scanner;
+
+import DAO.AdminDAO;
+import DAO.AdminDAOimp;
 import DAO.CustomerDAO;
 import DAO.CustomerDAOimp;
 import EntityDAO.Customer;
+import Exception.NoRecordFoundException;
+import Exception.SomeThingWentWrongException;
 
 public class CustomerService {
-	public static void checkCustomer(String UserName,String pass)
+	public static boolean checkCustomer(String UserName,String pass)
 	{
-//		Customer cus = new Customer();
+
 		CustomerDAO cusDAO = new CustomerDAOimp();
-		Object cus =cusDAO.getAllCustomers(UserName,pass);
-//		cusList.forEach(System.out::println);
-		
-//		if(cusList.contains(UserName))
-//			System.out.println("Yes");
-//		else
-//			System.out.println("No");
+		Customer cus = cusDAO.getAllCustomers(UserName,pass);
+		if(cus==null)
+		{
+			return false;
+		}
+		else {
+			System.out.println("Logged In Succesfully as "+UserName);
+			
+			return true;
+		}
+	}
+	
+	public static void allProducts() {
+		AdminDAO adminDAO = new AdminDAOimp();
+		Scanner sc =new Scanner(System.in);
+		try {
+			adminDAO.printAllProducts();
+			System.out.print("Enter Product ID of Product You Want to buy: ");
+			int id = sc.nextInt();
+			CustomerDAO cusDAO = new CustomerDAOimp();
+			cusDAO.addProductToCart(id);
+		} catch (SomeThingWentWrongException | NoRecordFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	public static void showCart(){
+		CustomerDAO cusDAO = new CustomerDAOimp();
 		
 	}
+//	 double total = prod.getPrice();
+//	 String name = prod.getName();	
 }

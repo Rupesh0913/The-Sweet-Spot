@@ -1,5 +1,6 @@
 package EntityDAO;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,14 +13,10 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
-	@Override
-	public String toString() {
-		return " id: " + id + ", username: " + username + ", password: " + password;
-	}
-
 	private String username;
 	private String password;
-	
+	@Embedded
+	Cart cart;
 
 	public Customer() {
 		super();
@@ -30,6 +27,11 @@ public class Customer {
 		super();
 		this.username = username;
 		this.password = password;
+	}
+	
+	@Override
+	public String toString() {
+		return " id: " + id + ", username: " + username + ", password: " + password;
 	}
 
 	public int getId() {
