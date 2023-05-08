@@ -3,11 +3,12 @@ package EntityDAO;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -17,9 +18,9 @@ public class Category {
 	private int id;
 	private String name;
 	
-//	
-//	@OneToMany(mappedBy = "category" , cascade = CascadeType.ALL)
-//	Set<Products> prodSet = new HashSet<>();
+
+	@OneToMany(mappedBy = "category" )
+	Set<Products> prodSet = new HashSet<>();
 
 	public Category() {
 		super();
@@ -27,29 +28,11 @@ public class Category {
 	}
 
 
-	
-
-//	public Set<Products> getProdSet() {
-//		return prodSet;
-//	}
-//
-//
-//
-//
-//	public void setProdSet(Set<Products> prodSet) {
-//		this.prodSet = prodSet;
-//	}
-
-
-
-
-	public Category(String name /*Set<Products> prodSet*/) {
+	public Category(String name) {
 		super();
 		this.name = name;
 //		this.prodSet = prodSet;
 	}
-
-
 
 
 	public int getId() {
@@ -68,13 +51,13 @@ public class Category {
 		this.name = name;
 	}
 
-//	public Set<Products> getProdSet() {
-//		return prodSet;
-//	}
-//
-//	public void setProdSet(Set<Products> prodSet) {
-//		this.prodSet = prodSet;
-//	}
+	public Set<Products> getProdSet() {
+		return prodSet;
+	}
+
+	public void setProdSet(Set<Products> prodSet) {
+		this.prodSet = prodSet;
+	}
 
 	@Override
 	public String toString() {
