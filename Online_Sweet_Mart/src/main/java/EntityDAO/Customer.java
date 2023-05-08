@@ -15,8 +15,8 @@ public class Customer {
 	private int id;
 	private String username;
 	private String password;
-	@Embedded
-	Cart cart;
+//	@Embedded
+//	Cart cart;
 
 	public Customer() {
 		super();

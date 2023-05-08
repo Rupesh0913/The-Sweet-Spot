@@ -37,8 +37,8 @@ public class CustomerService {
 			System.out.print("Enter Product ID of Product You Want to buy: ");
 			int id = sc.nextInt();
 			CustomerDAO cusDAO = new CustomerDAOimp();
-			cusDAO.addProductToCart(id);
-		} catch (SomeThingWentWrongException | NoRecordFoundException e) {
+//			cusDAO.addProductToCart(id);
+		} catch (SomeThingWentWrongException  e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}

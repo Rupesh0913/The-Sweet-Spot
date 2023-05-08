@@ -22,9 +22,9 @@ public class Products {
 	@JoinColumn(name ="category_id")
 	Category category;
 	
-	@ManyToOne
-	@JoinColumn(name ="cart_id")
-	Cart cart;
+//	@ManyToOne
+//	@JoinColumn(name ="cart_id")
+//	Cart cart;
 
 
 	public Products() {
@@ -68,13 +68,13 @@ public class Products {
 	public void setDesc(String desc) {
 		this.descr = desc;
 	}
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
+//	public Cart getCart() {
+//		return cart;
+//	}
+//
+//	public void setCart(Cart cart) {
+//		this.cart = cart;
+//	}
 //	public Category getCategory() {
 //		return category;
 //	}

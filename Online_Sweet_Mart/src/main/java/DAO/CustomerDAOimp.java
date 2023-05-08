@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import EntityDAO.Cart;
+//import EntityDAO.Cart;
 //import EntityDAO.Category;
 import EntityDAO.Customer;
 import EntityDAO.Products;
@@ -32,48 +32,48 @@ public class CustomerDAOimp implements CustomerDAO {
 		return customer;
 	}
 
-	@Override
-	public void addProductToCart(int id) throws NoRecordFoundException{
-		Scanner sc =new Scanner(System.in);
-		EntityManager em = EMUtil.getEntityManager();
-		Products prod=null;
-	
-			 prod = em.find(Products.class, id);
-			 if(prod == null)
-				 throw new NoRecordFoundException("Empty Data");
-			 
-			 Cart cart = new Cart();
-
-			 List<Products> prodList = new ArrayList();
-			 prodList.add(prod);
-			 cart.setProdList(prodList);
-			 
-			EntityTransaction et = em.getTransaction();
-			et.begin();
-			em.persist(cart);
-			em.persist(prod);
-			et.commit();
-			em.close();
-	}
-
-	@Override
-	public void viewCart() throws SomeThingWentWrongException {
-		EntityManager em = EMUtil.getEntityManager();
-		try {
-			String cartQuery = "SELECT p FROM Products p";
-			Query query = em.createQuery(cartQuery);
-			List<Cart> productList = query.getResultList();
-			productList.forEach(System.out::println);
-		}catch(Exception e)
-		{
-			throw new SomeThingWentWrongException("Problem in Printing");	
-		}
-		finally {
-			em.close();			
-		}
-		
-		
-	}
-	
+//	@Override
+//	public void addProductToCart(int id) throws NoRecordFoundException{
+//		Scanner sc =new Scanner(System.in);
+//		EntityManager em = EMUtil.getEntityManager();
+//		Products prod=null;
+//	
+//			 prod = em.find(Products.class, id);
+//			 if(prod == null)
+//				 throw new NoRecordFoundException("Empty Data");
+//			 
+//			 Cart cart = new Cart();
+//
+//			 List<Products> prodList = new ArrayList();
+//			 prodList.add(prod);
+//			 cart.setProdList(prodList);
+//			 
+//			EntityTransaction et = em.getTransaction();
+//			et.begin();
+//			em.persist(cart);
+//			em.persist(prod);
+//			et.commit();
+//			em.close();
+//	}
+//
+//	@Override
+//	public void viewCart() throws SomeThingWentWrongException {
+//		EntityManager em = EMUtil.getEntityManager();
+//		try {
+//			String cartQuery = "SELECT p FROM Products p";
+//			Query query = em.createQuery(cartQuery);
+//			List<Cart> productList = query.getResultList();
+//			productList.forEach(System.out::println);
+//		}catch(Exception e)
+//		{
+//			throw new SomeThingWentWrongException("Problem in Printing");	
+//		}
+//		finally {
+//			em.close();			
+//		}
+//		
+//		
+//	}
+//	
 
 }
