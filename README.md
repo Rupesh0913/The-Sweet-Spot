@@ -31,3 +31,8 @@ Customers can buy Products
 Product Quantity
 Product Quantity Decreases when customer buys it
 ```
+
+### Tech Stack:
+* JAVA
+* Hibernate
+* MySQL
