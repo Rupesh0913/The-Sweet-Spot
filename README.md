@@ -23,3 +23,11 @@ The main objective of this system is to maintain and manage detailed information
 * He can create a new account 
 * He can Ligin with that account
 * He view all the products in the shop
+
+```
+Upcoming Fatures
+Customers can add product can cart
+Customers can buy Products 
+Product Quantity
+Product Quantity Decreases when customer buys it
+```
